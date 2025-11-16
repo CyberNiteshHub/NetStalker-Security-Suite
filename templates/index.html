@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetStalker v1.0 - Network Security Suite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container my-4">
+        <header class="text-center header mb-4">
+            <h1 class="display-4"><i class="fas fa-shield-alt"></i> NetStalker v1.0 <span class="ai-badge">AI</span>
+            </h1>
+            <p class="lead">Your AI-Powered Security Auditor</p>
+        </header>
+
+        <ul class="nav nav-tabs nav-fill main-tabs" id="mainTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="wifi-scan-tab-btn" data-bs-toggle="tab"
+                    data-bs-target="#wifi-scan-tab" type="button" role="tab" aria-controls="wifi-scan-tab"
+                    aria-selected="true">
+                    <i class="fas fa-wifi"></i> Wi-Fi Scanner
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="my-network-tab-btn" data-bs-toggle="tab" data-bs-target="#my-network-tab"
+                    type="button" role="tab" aria-controls="my-network-tab" aria-selected="false">
+                    <i class="fas fa-network-wired"></i> My Network
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="live-traffic-tab-btn" data-bs-toggle="tab"
+                    data-bs-target="#live-traffic-tab" type="button" role="tab" aria-controls="live-traffic-tab"
+                    aria-selected="false">
+                    <i class="fas fa-chart-line"></i> Live Traffic
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="mainTabsContent">
+
+            <div class="tab-pane fade show active" id="wifi-scan-tab" role="tabpanel"
+                aria-labelledby="wifi-scan-tab-btn">
+                <div class="card dashboard-card-tabbed">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-broadcast-tower"></i> Available Wi-Fi Networks</h5>
+                        <button id="scan-wifi-btn" class="btn btn-scan">
+                            <i class="fas fa-sync-alt fa-spin d-none"></i>SCAN
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="wifi-list-container" class="list-container">
+                            <p class="text-secondary text-center mt-3">Click 'SCAN' to discover nearby Wi-Fi networks...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center d-none" id="scan-actions-section">
+                        <button id="download-pdf-btn" class="btn btn-download">
+                            <i class="fas fa-file-pdf"></i> Download Report
+                        </button>
+                        <button id="ai-security-audit-btn" class="btn btn-ai-plan ms-2">
+                            <i class="fas fa-shield-virus"></i> Run AI Security Audit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="my-network-tab" role="tabpanel" aria-labelledby="my-network-tab-btn">
+                <div class="row">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <div class="card dashboard-card-tabbed">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-desktop"></i> My Device Info</h5>
+                                <button id="refresh-host-details-btn" class="btn btn-scan-details btn-sm"
+                                    style="background-color: var(--signal-bar-active);">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="host-details-loader" class="text-center d-none">
+                                    <div class="spinner-border text-primary" role="status"></div>
+                                </div>
+                                <div id="host-details-content" class="list-container host-details-list">
+                                    <p class="text-secondary text-center mt-3">Click Refresh to load your device's
+                                        network details...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="card dashboard-card-tabbed">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-mobile-alt"></i> Devices on this Network</h5>
+                                <button id="scan-local-network-btn" class="btn btn-scan">
+                                    <i class="fas fa-sync-alt fa-spin d-none"></i>SCAN
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="local-device-list-container" class="list-container">
+                                    <p class="text-secondary text-center mt-3">Click 'SCAN' to find other devices on
+                                        your network...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="live-traffic-tab" role="tabpanel" aria-labelledby="live-traffic-tab-btn">
+                <div class="card dashboard-card-tabbed">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-chart-line"></i> Live Traffic Monitor</h5>
+                        <div>
+                            <button id="start-sniff-btn" class="btn btn-scan-details"
+                                style="background-color: var(--signal-bar-active);">Start</button>
+                            <button id="stop-sniff-btn" class="btn btn-scan-details" disabled>Stop</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="sniffing-status-msg" class="text-secondary text-center">Monitoring is stopped.</div>
+                        <div id="traffic-list-container" class="list-container mt-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel"><i class="fas fa-network-wired"></i> Network Details
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-loader" class="text-center d-none">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2 text-secondary">Gathering deep information...</p>
+                    </div>
+                    <div id="modal-content-area">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="aiAuditModal" tabindex="-1" aria-labelledby="aiAuditModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aiAuditModalLabel"><i class="fas fa-shield-alt"></i> AI Security Audit
+                        Report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="ai-audit-modal-loader" class="text-center d-none">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2 text-secondary">AI is auditing all networks... This may take a moment.</p>
+                    </div>
+                    <div id="ai-audit-modal-content-area">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="localDeviceModal" tabindex="-1" aria-labelledby="localDeviceModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="localDeviceModalLabel"><i class="fas fa-laptop-house"></i> Device
+                        Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="local-modal-content-area">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+        <div id="alert-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <strong class="me-auto"><i class="fas fa-exclamation-triangle"></i> Error</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="alert-toast-body">
+                Error message goes here.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

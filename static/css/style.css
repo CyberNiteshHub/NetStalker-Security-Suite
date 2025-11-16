@@ -1,0 +1,564 @@
+/* Google Font: Poppins - आपके डिजाइन के लिए एक साफ और आधुनिक फॉन्ट */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* --- Custom Variables matching Canva Design --- */
+:root {
+    --bg-primary: #000000;
+    /* Pure Black Background */
+    --card-bg: #0A2F69;
+    /* Dark Blue Card Background */
+    --border-color: #2D5896;
+    /* Lighter Blue Border for Cards */
+    --text-primary: #FFFFFF;
+    /* Pure White for main text */
+    --text-secondary: #E0E0E0;
+    /* Off-white for less important text (like MAC/Vendor) */
+    --heading-color: #0026FF;
+    /* Blue for main headings */
+    --scan-button-bg: #0026FF;
+    /* Blue for Scan button */
+    --scan-button-hover: #001A99;
+    /* Darker Blue on hover */
+    --details-button-bg: #FF0000;
+    /* Red for Details button */
+    --details-button-hover: #CC0000;
+    /* Darker Red on hover */
+    --signal-bar-active: #00B894;
+    /* Green for active signal bars */
+    --signal-bar-inactive: #4B4B4B;
+    /* Dark grey for inactive bars */
+    --danger-color: #D63031;
+    /* Red for errors */
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    padding-top: 2rem;
+    overflow-x: hidden;
+    /* Horizontal scrolling से बचें */
+}
+
+/* --- Main Container --- */
+.container {
+    max-width: 1200px;
+    /* दोनों कार्ड्स के लिए थोड़ी ज्यादा जगह */
+}
+
+/* --- Header Section --- */
+.header {
+    background-color: var(--bg-primary);
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.header h1 {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header h1 i {
+    color: var(--text-primary);
+    font-size: 2.8rem;
+}
+
+.header .lead {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: -10px;
+}
+
+/* ===== NEW: Tab Navigation Styles ===== */
+.main-tabs {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.main-tabs .nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.1rem;
+    border: none;
+    padding-bottom: 0.75rem;
+}
+
+.main-tabs .nav-link.active {
+    color: var(--text-primary);
+    font-weight: 600;
+    background-color: transparent;
+    border-bottom: 3px solid var(--scan-button-bg);
+}
+
+.main-tabs .nav-link:hover {
+    color: var(--text-primary);
+}
+
+.main-tabs .nav-link i {
+    margin-right: 8px;
+    color: var(--scan-button-bg);
+}
+
+.main-tabs .nav-link.active i {
+    color: var(--text-primary);
+}
+
+/* ===== NEW: Tabbed Card Styles ===== */
+.tab-content {
+    padding-top: 1.5rem;
+}
+
+.dashboard-card-tabbed {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: none !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 1.5rem 0;
+}
+
+.card-header h5 {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header h5 i {
+    color: var(--text-primary);
+    font-size: 1.7rem;
+}
+
+/* --- Scan Button --- */
+.btn-scan {
+    background-color: var(--scan-button-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.8rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.btn-scan:hover,
+.btn-scan:focus {
+    background-color: var(--scan-button-hover);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.btn-scan:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-scan .fa-spin {
+    margin-right: 0.5rem;
+}
+
+/* --- List Container (Height is consistent across tabs) --- */
+.list-container {
+    height: 65vh;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.list-container p.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+/* --- Wi-Fi List Item --- */
+.wifi-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.wifi-item:hover {
+    background-color: #1a1a1a;
+    border-color: var(--scan-button-bg);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Wi-Fi Item Details Left Side */
+.wifi-info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.wifi-info .index {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.wifi-info .ssid {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.wifi-info .mac-vendor {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.wifi-info .mac-vendor span {
+    font-weight: 500;
+}
+
+/* Wi-Fi Item Details Right Side */
+.wifi-stats {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wifi-stats .signal-text {
+    font-weight: 600;
+    color: var(--signal-bar-active);
+    font-size: 1.1rem;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Signal Bars */
+.signal-bars {
+    display: flex;
+    align-items: flex-end;
+    height: 25px;
+    width: 25px;
+    transform: rotate(180deg);
+    margin-right: 10px;
+}
+
+.signal-bars .bar {
+    width: 5px;
+    background-color: var(--signal-bar-inactive);
+    margin-right: 2px;
+    border-radius: 1px;
+}
+
+.signal-bars .bar.active {
+    background-color: var(--signal-bar-active);
+}
+
+/* Details Button */
+.btn-scan-details {
+    background-color: var(--details-button-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-scan-details:hover {
+    background-color: var(--details-button-hover);
+    transform: translateY(-2px);
+}
+
+/* --- Modal Styles --- */
+.modal-content {
+    background-color: #1e1e32;
+    border: 1px solid #3c3c5a;
+    color: #e0e0eb;
+    border-radius: 12px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #3c3c5a;
+}
+
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-title {
+    color: #6c5ce7;
+    font-weight: 600;
+}
+
+#interactive-scan-results {
+    background-color: #12121f !important;
+    border: 1px solid #3c3c5a;
+    white-space: pre-wrap;
+    word-break: break-all;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.modal-body .table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.15);
+    color: var(--text-primary);
+}
+
+.modal-body .table strong {
+    color: var(--heading-color);
+}
+
+.modal-body .badge {
+    font-size: 0.9em;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* --- Download Button and Section --- */
+.card-footer {
+    background-color: transparent;
+    border-top: 2px solid var(--border-color);
+    padding: 1.5rem 0 0 0;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-download {
+    background-color: var(--signal-bar-active);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.8rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.btn-download:hover {
+    background-color: #009975;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.btn-download i {
+    margin-right: 8px;
+}
+
+
+/* ===== Traffic Monitor Styles ===== */
+#sniffing-status-msg {
+    padding: 0.5rem;
+    background-color: var(--bg-primary);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+
+#traffic-list-container .wifi-item {
+    padding: 0.75rem 1.5rem;
+}
+
+#traffic-list-container .ssid i {
+    color: var(--scan-button-bg);
+}
+
+
+/* ===== AI Feature Styles (Demo Mode) ===== */
+.ai-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: var(--scan-button-bg);
+    color: var(--text-primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+
+.btn-ai-plan {
+    background-color: var(--heading-color);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.btn-ai-plan:hover {
+    background-color: var(--scan-button-hover);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.btn-ai-plan i {
+    margin-right: 8px;
+}
+
+#ai-audit-modal-content-area .table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.15);
+    color: var(--text-secondary);
+}
+
+#ai-audit-modal-content-area .table th {
+    color: var(--text-primary);
+}
+
+#ai-audit-modal-content-area .rank-1 {
+    color: var(--details-button-bg);
+    font-weight: 700;
+}
+
+#ai-audit-modal-content-area .rank-2 {
+    color: #F59E0B;
+    font-weight: 600;
+}
+
+#ai-audit-modal-content-area .rank-3 {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ===== NEW: "My Network" Tab Styles ===== */
+
+/* "My Device Info" List */
+.host-details-list {
+    font-size: 0.95rem;
+    height: 65vh;
+    /* बाकी टैब्स के बराबर हाइट */
+}
+
+.host-details-list .list-group-item {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+}
+
+.host-details-list .list-group-item strong {
+    color: var(--text-secondary);
+    margin-right: 10px;
+}
+
+/* "Devices on this Network" List Item */
+.local-device-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.local-device-item:hover {
+    background-color: #1a1a1a;
+    border-color: var(--scan-button-bg);
+}
+
+.local-device-item .device-info {
+    font-size: 0.9rem;
+}
+
+.local-device-item .device-ip {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.local-device-item .device-mac {
+    color: var(--text-secondary);
+}
+
+.local-device-item .device-vendor {
+    color: var(--signal-bar-active);
+    font-weight: 500;
+}
+
+.local-device-item .device-actions .btn {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    margin-left: 5px;
+}
+
+/* ===== UPDATED: "Exploit Search" Button Style ===== */
+/* (Replaces old .btn-ai-analyze) */
+.btn-exploit-search {
+    background-color: var(--scan-button-bg);
+    /* Blue */
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    margin-top: 5px;
+    text-decoration: none;
+    /* यह एक लिंक होगा */
+    display: inline-block;
+}
+
+.btn-exploit-search:hover {
+    background-color: var(--scan-button-hover);
+    color: var(--text-primary);
+}

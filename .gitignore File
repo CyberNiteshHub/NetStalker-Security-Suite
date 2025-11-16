@@ -1,0 +1,15 @@
+Python virtual environment
+/myenv/
+/venv/
+
+Python cache files
+pycache/
+*.pyc
+*.pyo
+*.pyd
+
+Editor/IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo

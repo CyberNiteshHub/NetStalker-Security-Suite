@@ -1,0 +1,6 @@
+flask
+scapy
+python-nmap
+mac-vendor-lookup
+Flask-SocketIO
+psutil
