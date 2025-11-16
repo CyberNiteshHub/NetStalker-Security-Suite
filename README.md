@@ -1,50 +1,69 @@
-NetStalker v1.0 - Advanced Web-Based Network Scanner
-A comprehensive, web-based network analysis toolkit built with Python, Flask, and Scapy. It allows you to scan for nearby Wi-Fi networks, perform deep analysis on connected devices, and monitor network traffic in real-time through a modern, responsive web interface.
+NetStalker v1.0 - Network Security Suite
 
-Dashboard Screenshot
-(Please add a screenshot of your project running to the docs folder and name it netstalker-dashboard.png. It will appear here automatically.)
+A comprehensive, web-based Network Security Suite designed for ethical hackers, students, and IT professionals. NetStalker provides a 3-in-1 dashboard to Scan, Analyze, and Monitor your network environment in real-time.
+
+This prototype was built for a hackathon and features a "Demo Mode" for AI-powered features, allowing it to demonstrate advanced concepts without requiring live API keys.
+
+📸 Dashboard Preview
+
+(This is the main 3-tab interface of the application)
 
 🔥 Key Features
-Wi-Fi Scanner: Scans for all nearby Wi-Fi networks, detailing their SSID, BSSID, signal strength, channel, and security protocols.
 
-Deep Network Analysis: Gathers in-depth information on any scanned network, including the router's hardware vendor and WPS status.
+NetStalker is organized into three main modules:
 
-Live Traffic Monitor: Captures and displays live network traffic on your connected interface, identifying the "top talkers" (devices consuming the most bandwidth) in real-time.
+1. Wi-Fi Scanner (Public Networks)
 
-Interactive Scans: For the network you are connected to, you can find the router's IP address, perform a live Ping check, and run an Nmap scan to detect OS and open ports/services.
+Scan for Networks: Discovers all nearby Wi-Fi networks using nmcli.
 
-PDF Reporting: With a single click, generate and download a professional PDF report summarizing the results of the Wi-Fi scan.
+Detailed View: Shows SSID, BSSID, Signal Strength, Channel, Security type, and Hardware Vendor.
 
-Modern Web UI: A clean, real-time user interface powered by Flask and WebSockets, designed to be both functional and aesthetically pleasing.
+PDF Reporting: Instantly generate and download a professional PDF report of all scanned networks.
+
+AI Security Audit (Demo): Simulates an AI analysis by using real scanned SSIDs to generate a mock security report, identifying the top 3 high-risk networks with actionable mitigation advice.
+
+2. My Network (Local Network)
+
+Host Device Info: Fetches and displays detailed, real-time information about your own machine, including:
+
+IPv4 and IPv6 Addresses
+
+Hardware MAC Address
+
+Gateway (Router) IP
+
+DNS Servers
+
+Wireless Link Speed, Signal Strength, and Frequency.
+
+Local Device Scanner: Runs a scapy-based ARP scan to discover all other devices (phones, laptops, smart TVs, etc.) currently connected to your local network.
+
+Deep Analysis:
+
+Nmap Port Scan: Run a real Nmap port scan on any discovered local device.
+
+Exploit Search: Links the discovered service (e.g., Apache 2.4.52) directly to the Exploit-DB database to find real, published vulnerabilities. (This replaces the AI analyzer for a more practical, real-world tool).
+
+3. Live Traffic Monitor
+
+Real-time Sniffing: Uses scapy to capture network packets on your active interface.
+
+Live Dashboard: Uses WebSockets to send data to the UI every 2 seconds without refreshing the page.
+
+Top Talkers: Identifies which local IP addresses are sending or receiving the most data, helping to spot bandwidth hogs or suspicious activity.
 
 🛠️ Tech Stack
-Backend:
 
-Python
+Backend: Python, Flask, Flask-SocketIO
 
-Flask (Web Framework)
+Scanning & Analysis: Scapy, python-nmap, subprocess (for nmcli, iwconfig, ip)
 
-Flask-SocketIO (for real-time WebSockets)
+Frontend: JavaScript (ES6+), Socket.IO Client, Bootstrap 5
 
-Scapy (for packet capturing and analysis)
-
-python-nmap (for Nmap integration)
-
-psutil (for system and network information)
-
-Frontend:
-
-HTML5 & CSS3
-
-JavaScript (ES6+)
-
-Socket.IO Client
-
-Bootstrap 5
-
-jsPDF & jspdf-autotable (for PDF report generation)
+Reporting: jsPDF, jspdf-autotable
 
 🚀 Setup and Installation
+
 This tool is designed to run on Kali Linux or other Debian-based distributions.
 
 1. Install System Prerequisites:
@@ -52,23 +71,36 @@ This tool is designed to run on Kali Linux or other Debian-based distributions.
 sudo apt update
 sudo apt install nmap reaver python3-venv
 
+
 2. Clone the Repository:
 
-git clone [YOUR-GITHUB-REPOSITORY-LINK-HERE]
-cd NetStalker_v1
+git clone https://github.com/CyberNiteshHub/NetStalker-Security-Suite.git
+cd NetStalker-Security-Suite
+
 
 3. Create and Activate Virtual Environment:
 
+# We use 'myenv' as specified in start.sh
 python3 -m venv myenv
 source myenv/bin/activate
 
+
 4. Install Python Dependencies:
 
+# This will install flask, scapy, psutil, etc.
 pip install -r requirements.txt
 
-🏃 How to Run
-After completing the setup, run the application using the provided shell script. This is necessary as packet capturing requires root privileges.
 
+🏃 How to Run
+
+After setup, just run the provided shell script. It handles permissions and starts the server.
+
+# This script MUST be run with sudo for scanning to work
 sudo ./start.sh
 
+
 Now, open your web browser and navigate to http://127.0.0.1:5000.
+
+📄 License
+
+This project is distributed under the MIT License. See the LICENSE file for more information.
