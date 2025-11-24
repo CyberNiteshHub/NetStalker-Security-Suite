@@ -6,7 +6,7 @@ This prototype was built for a hackathon and features a "Demo Mode" for AI-power
 
 📸 Dashboard Preview
 
-![image alt]([image_url](https://github.com/CyberNiteshHub/NetStalker-Security-Suite/blob/ba47e3e1644b6ef249b02b74835fbc9144561656/1)%20Wi-Fi%20Scanner.png))
+![image alt](https://github.com/CyberNiteshHub/NetStalker-Security-Suite/blob/ba47e3e1644b6ef249b02b74835fbc9144561656/1%20Wi-Fi%20Scanner.png)
 
 
 
