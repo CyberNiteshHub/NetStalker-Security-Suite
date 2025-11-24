@@ -6,7 +6,17 @@ This prototype was built for a hackathon and features a "Demo Mode" for AI-power
 
 📸 Dashboard Preview
 
-![image alt](https://github.com/CyberNiteshHub/NetStalker-Security-Suite/blob/ba47e3e1644b6ef249b02b74835fbc9144561656/1%20Wi-Fi%20Scanner.png)
+![Wi-Fi Scanner](https://raw.githubusercontent.com/CyberNiteshHub/NetStalker-Security-Suite/main/1%29%20Wi-Fi%20Scanner.png)
+
+![My Network](https://raw.githubusercontent.com/CyberNiteshHub/NetStalker-Security-Suite/main/2%29%20My%20Network.png)
+
+![Live Traffic](https://raw.githubusercontent.com/CyberNiteshHub/NetStalker-Security-Suite/main/3%29%20Live%20Traffic.png)
+
+![AI Security Audit Report](https://raw.githubusercontent.com/CyberNiteshHub/NetStalker-Security-Suite/main/4%29%20AI%20Security%20Audit%20Report.png)
+
+![Network Vulnerability Scanner](https://raw.githubusercontent.com/CyberNiteshHub/NetStalker-Security-Suite/main/5%29%20Network%20Vulnerability%20Scanner.png)
+
+![Port Scan](https://raw.githubusercontent.com/CyberNiteshHub/NetStalker-Security-Suite/main/6%29%20Port%20Scan.png)
 
 
 
